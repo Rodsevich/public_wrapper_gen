@@ -1,0 +1,9 @@
+paths:
+  example/public_wrapper_example.dart
+
+mustache:
+  extensions:
+    .mustache
+  partials_dirs:
+    lib/src/partials
+    lib/src/partials/wrapper

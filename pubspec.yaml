@@ -1,0 +1,25 @@
+name: public_wrapper_gen
+description: A code generator based on source_gen to make APIs for libraries
+version: 0.0.1
+author: Nico Rodsevich <email@example.com>
+#homepage: https://www.example.com
+
+environment:
+  sdk: '>=1.0.0 <2.0.0'
+
+dependencies:
+  #TODO: back to normal when Pull Request approved
+  mustache4dart: #'>= 1.0.0 < 2.0.0'
+    git:
+      url: https://github.com/Rodsevich/mustache4dart
+  source_gen:
+    git:
+      url: https://github.com/Rodsevich/source_gen
+  resource: any
+  args: ^0.13.6
+  dart_config: any
+  console: any
+
+dev_dependencies:
+  test: '>=0.12.0 <0.13.0'
+  build_runner: ^0.1.0

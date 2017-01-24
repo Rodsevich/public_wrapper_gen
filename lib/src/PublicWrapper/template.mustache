@@ -1,0 +1,31 @@
+
+
+class _${{className}} {
+
+  {{publicClassName}} _publicWrapper;
+
+  {{publicClassName}} get _toPublic{
+    if (_publicWrapper == null)
+      _publicWrapper = new {{publicClassName}}._fromInternal(this);
+    return _publicWrapper;
+  }
+
+}
+
+class {{publicClassName}} {
+
+  {{className}} _internal;
+{{#generateconstructor}}
+  {{>wrapper_constructor}}
+{{/generateconstructor}}
+
+  {{publicClassName}}._fromInternal(this._internal);
+
+{{#fields}}
+  {{>wrapper_field}}
+{{/field}}
+
+{{#methods}}
+  {{>wrapper_method}}
+{{/methods}}
+}
