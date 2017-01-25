@@ -4,17 +4,21 @@ import "../annotations.dart";
 import 'package:analyzer/dart/element/element.dart';
 import 'package:source_gen/src/annotation.dart';
 
-List<MethodElement> generatableMethodsList(ClassElement classElement) {
+List<MethodElement> generatableMethodsList(ClassElement classElement,
+    {omitIfPrivate: true}) {
   return classElement.methods
       .where((MethodElement method) =>
-          false == method.metadata.any(isGenerationOmisionField))
+          !(method.metadata.any(isGenerationOmisionField) ||
+              (omitIfPrivate && method.isPrivate)))
       .toList();
 }
 
-List<FieldElement> generatableFieldsList(ClassElement classElement) {
+List<FieldElement> generatableFieldsList(ClassElement classElement,
+    {omitIfPrivate: true}) {
   return classElement.fields
       .where((FieldElement field) =>
-          false == field.metadata.any(isGenerationOmisionField))
+          !(field.metadata.any(isGenerationOmisionField) ||
+              (omitIfPrivate && field.isPrivate)))
       .toList();
 }
 
