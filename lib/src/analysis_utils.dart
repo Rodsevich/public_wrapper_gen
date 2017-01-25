@@ -35,6 +35,21 @@ abstract class _BaseElement {
   }
 }
 
+class Constructor extends _BaseElement {
+  @override
+  ConstructorElement element;
+  List<ParameterElement> params;
+
+  Constructor(this.element) : super(element) {
+    this.params = element.parameters;
+  }
+
+  String get declarationParams =>
+      params.map((p) => "${p.type.name} ${p.name}").toList().join(', ');
+
+  String get usageParams => params.map((p) => p.name).toList().join(', ');
+}
+
 class Method extends _BaseElement {
   @override
   MethodElement element;
@@ -44,7 +59,7 @@ class Method extends _BaseElement {
     var pk = m.metadata
         .firstWhere((m) => matchAnnotation(PublicKey, m), orElse: () => null);
     this.newName =
-        pk?.constantValue.getField("keyName").toStringValue() ?? this.name;
+        pk?.constantValue?.getField("keyName")?.toStringValue() ?? this.name;
     this.type = m.returnType.name;
   }
 

@@ -1,1 +1,4 @@
-{{publicClassName}}({{#requiredParams}}{{type}} {{newName}},{{/requiredParams}}{{#namedParams}}{ {{/namedParams}}{{#namedParams}}{{type}} {{newName}})
+{{documentation}}
+{{publicClassName}}({{declarationParams}}){
+  this._private = new {{className}}.from{{publicClassName}}({{usageParams}});
+}
