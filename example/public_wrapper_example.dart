@@ -33,7 +33,7 @@ class Libro extends _$Libro {
     _paginas = paginas;
   }
 
-  ///Tirame esta doc, pls!
+  ///Tirame esta doc, pls!!
   Libro.fromBook(int paginas, this.titulo);
 
   @PublicKey("sorp", inDefaultConstructor: 1)
