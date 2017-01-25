@@ -63,8 +63,7 @@ class Method extends _BaseElement {
     this.type = m.returnType.name;
   }
 
-  @override
-  String get params {
+  String get paramsDeclaration {
     StringBuffer b = new StringBuffer('(');
     b.write(this.element.parameters.map((ParameterElement p) {
           StringBuffer buffer = new StringBuffer();
@@ -73,6 +72,14 @@ class Method extends _BaseElement {
         }).join(',') +
         ')');
     return b.toString();
+  }
+
+  String get paramsNames {
+    return this
+        .element
+        .parameters
+        .map((ParameterElement p) => p.name)
+        .join(',');
   }
 }
 
