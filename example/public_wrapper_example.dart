@@ -21,9 +21,21 @@ part 'public_wrapper_example.public.dart';
 //   factory Person.fromJson(json) => _$PersonFromJson(json);
 // }
 
-@PublicWrapper("Book")
+@PublicWrapper("Book", generateConstructor: true)
 class Libro extends _$Libro {
-  int paginas;
+  int _paginas;
+  @PublicKey("title", generateSetter: false, inDefaultConstructor: 0)
+  String titulo;
+
+  int get paginas => _paginas;
+
+  void set paginas(int paginas) {
+    _paginas = paginas;
+  }
+
+  Libro.fromBook(int paginas, this.titulo);
+
+  @PublicKey("sorp", inDefaultConstructor: 1)
   String sorp = "sorpo";
 
   String _soyPrivado() => "Soy privado";

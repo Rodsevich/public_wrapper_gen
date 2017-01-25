@@ -34,13 +34,16 @@ class PublicWrapperGenerator extends GeneratorForAnnotation<PublicWrapper> {
 
       // Get all of the fields that need to be assigned
       // TODO: support overriding the field set with an annotation option
-      vars["fields"] =
-          generatableFieldsList(classElement).map((f) => new Field(f)).toList();
+      vars["fields"] = generatableFieldsList(classElement)
+          .map((f) => new Field(f))
+          .where((Field f) => !f.private)
+          .toList();
       if (vars["generateConstructor"] = annotation.generateConstructor) {
         List<Field> fields = (vars["fields"] as List<Field>)
             .where((Field f) => f.inConstructor)
             .toList();
         vars["defaultConstructor"] = {
+          "publicClassName": vars["publicClassName"],
           "requiredParams": fields
               .where((f) => f.constructorOrder != null)
               .toList()
@@ -51,8 +54,9 @@ class PublicWrapperGenerator extends GeneratorForAnnotation<PublicWrapper> {
       }
       vars["methods"] = generatableMethodsList(classElement)
           .map((m) => new Method(m))
+          .where((Method m) => !m.private)
           .toList();
-      debugger();
+      // debugger();
       new Resource(
               "package:public_wrapper_gen/src/PublicWrapper/template.mustache")
           .readAsString()

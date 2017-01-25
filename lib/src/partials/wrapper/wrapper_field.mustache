@@ -2,5 +2,5 @@
 {{type}} get {{newName}} => _private.{{name}};
 {{/generateGetter}}
 {{#generateSetter}}
-void set {{newName}}(type {{newName}}) { _private.{{name}} = {{newName}}; }
+void set {{newName}}({{type}} {{newName}}) { _private.{{name}} = {{newName}}; }
 {{/generateSetter}}

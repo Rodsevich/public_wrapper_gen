@@ -1,1 +1,3 @@
-{{publicClassName}}({{#requiredParams}}{{type}} {{newName}},{{/requiredParams}}{{#namedParams}}{ {{/namedParams}}{{#namedParams}}{{type}} {{newName}})
+{{#defaultConstructor}}
+{{publicClassName}}({{#requiredParams}}{{type}} {{newName}},{{/requiredParams}}{{#namedParams}}{ {{/namedParams}}{{#namedParams}}{{type}} {{newName}}{{/namedParams}}{{#namedParams}} }{{/namedParams}})
+{{/defaultConstructor}}

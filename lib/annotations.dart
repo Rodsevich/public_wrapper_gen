@@ -34,5 +34,5 @@ class PublicKey {
 }
 
 class OmitGeneration {
-  OmitGeneration();
+  const OmitGeneration();
 }

@@ -14,16 +14,16 @@ class _${{className}} {
 
 class {{publicClassName}} {
 
-  {{className}} _internal;
-{{#generateconstructor}}
+  {{className}} _private;
+{{#generateConstructor}}
   {{>wrapper_constructor}}
-{{/generateconstructor}}
+{{/generateConstructor}}
 
-  {{publicClassName}}._fromInternal(this._internal);
+  {{publicClassName}}._fromPrivate(this._private);
 
 {{#fields}}
   {{>wrapper_field}}
-{{/field}}
+{{/fields}}
 
 {{#methods}}
   {{>wrapper_method}}
